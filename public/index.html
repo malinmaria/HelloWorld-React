@@ -34,11 +34,16 @@
       });
       var CommentList = React.createClass({
         render: function() {
+          var commentNodes = this.props.data.map(function(comment) {
+            return (
+              <Comment author={comment.author} key={comment.id}>
+            {comment.text}
+            </Comment>
+            );
+          });
           return (
             <div className="commentList">
-              <comment author="Pete Hunt">This is one comment</Comment>
-              <comment author="Jordan Walke">This is <em>another</em> comment</Comment>
-              Hello, world! I am a CommentList.
+            {commentNodes}
             </div>
           );
         }
