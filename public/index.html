@@ -16,12 +16,16 @@
     <script type="text/babel">
       // To get started with this tutorial running your own code, simply remove
       // the script tag loading scripts/example.js and start writing code here.
+      var data = [
+        {id: 1, author: "Pete Hunt", text: "This is one comment"},
+        {id: 2, author: "Jordan Walke", text: "This is *another* comment"}
+      ];
       var CommentBox = React.createClass({
         render: function() {
           return (
             <div className = "commentBox" >
               <h1>Comments</h1>
-              <CommentList />
+              <CommentList data={this.props.data} />
               <commentForm />
             Hello, world! I am a CommentBox.
           </div>
@@ -66,6 +70,7 @@
       });
       ReactDOM.render(
       <CommentBox />,
+        <CommentBox data={data},
         document.getElementById('content')
       );
     </script>
