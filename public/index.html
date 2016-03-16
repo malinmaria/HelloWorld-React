@@ -19,9 +19,48 @@
       var CommentBox = React.createClass({
         render: function() {
           return (
-            <div className="commentBox">
+            <div className = "commentBox" >
+              <h1>Comments</h1>
+              <CommentList />
+              <commentForm />
             Hello, world! I am a CommentBox.
           </div>
+          );
+        }
+      });
+      var CommentList = React.createClass({
+        render: function() {
+          return (
+            <div className="commentList">
+              <comment author="Pete Hunt">This is one comment</Comment>
+              <comment author="Jordan Walke">This is <em>another</em> comment</Comment>
+              Hello, world! I am a CommentList.
+            </div>
+          );
+        }
+      });
+      var commentForm = React.createClass({
+        render: function() {
+          return (
+          <div className="commentForm">
+              Hello, world. I am a CommentForm.
+            </div>
+          );
+        }
+      });
+      var Comment = React.createClass({
+        rawMarkup: function() {
+          var rawMarkup = marked(this.props.children.toString(),{sanitize:true});
+          return {__html: rawMarkup)};
+        },
+        render: function() {
+          return (
+            <div className="comment">
+              <h2 className="commentAuthor">
+               {this.props.author}
+              </h2>
+               <span dangerouslySetInnerHTML={this.rawMarkup()} />
+            </div>
           );
         }
       });
